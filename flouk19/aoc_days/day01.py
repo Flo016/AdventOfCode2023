@@ -1,8 +1,5 @@
 from typing import List, Tuple
 # Copy the input for this day in the file dayXX_input.txt (where XX is the day number) in the same folder as this file
-lines = []
-with open("day01_input.txt", "r") as file:
-    lines = file.readlines()
 
 def find_boyer_moore(text: list, pattern: list) -> bool:
         n, m = len(text), len(pattern)
@@ -68,7 +65,7 @@ def part_1(lines: List[str]) -> Tuple[str, any]:
         input("Wait")"""
     result = sum(numbers)
     print(result)
-    return '<Name/Short Description of this part>', result
+    return 'If only numbers are included', result
 
 
 def part_2(lines: List[str]) -> Tuple[str, any]:
@@ -115,16 +112,13 @@ def part_2(lines: List[str]) -> Tuple[str, any]:
         # determine that potential last number is really the last number. 
         biggest_index = second_number_index
         if biggest_index is None: biggest_index = 0 #when no number is contained within the line.
-        print(len(line)-1 - biggest_index)
         if (len(line)-1 - biggest_index) < 5:
             sliding_window_size = len(line)-1 - biggest_index
         else:
             sliding_window_size = 5
          # every pattern can only be contained once within the sliding window.
         pattern_found = False
-        print("sliding_Window_size: " + str(sliding_window_size))
         for i in range(len(line)-sliding_window_size-1, biggest_index-1, -1):
-            print(line[i:i+sliding_window_size])
             for pattern in written_number.keys():
                 a, b = find_boyer_moore(line[i:i+sliding_window_size], pattern) # True/False, None/#Number
                 if a:
@@ -136,24 +130,10 @@ def part_2(lines: List[str]) -> Tuple[str, any]:
             if pattern_found:
                 break
         numbers.append(int(first_number+second_number))
-        print(line)
-        print(first_number)
-        print(second_number)
-        print(first_number + second_number)
-        print(numbers[-1])
-        print("---")
         
     
     result = sum(numbers)
     print(result)
 
     # find numbers first, then look left and right of them. if index_lenght from border is longer than 3, start searching for strings from these borders.
-    return '<Name/Short Description of this part>', result
-
-
-
-
-#part_1(lines)
-part_2(lines) # 53551 is too low 53708 is too high 53653 wrong 53592
-
-
+    return 'If written Numbers are included: ', result
