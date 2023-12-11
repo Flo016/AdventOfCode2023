@@ -46,16 +46,16 @@ def extract_adjacent_numbers(line, center_index):
         try:
             int(first_number)
             int(second_number)
-            print("first number: " + first_number)
-            print("second number:c" + second_number)
+            #print("first number: " + first_number)
+            #print("second number:c" + second_number)
             return int(first_number) + int(second_number)
         except ValueError:
-            print("second number: " + second_number)
+            #print("second number: " + second_number)
             return int(second_number) # there is no first number
     else:
         try:
             int(first_number)
-            print("first number: " + first_number)
+            #print("first number: " + first_number)
             return int(first_number)
         except ValueError:
             return 0 # there is no first or second number
@@ -106,16 +106,16 @@ def multiply_adjacent_numbers(line, center_index):
         try:
             int(first_number)
             int(second_number)
-            print("first number: " + first_number)
-            print("second number:c" + second_number)
+            #print("first number: " + first_number)
+            #print("second number:c" + second_number)
             return [int(first_number), int(second_number)]
         except ValueError:
-            print("second number: " + second_number)
+            #print("second number: " + second_number)
             return [int(second_number)] # there is no first number
     else:
         try:
             int(first_number)
-            print("first number: " + first_number)
+            #print("first number: " + first_number)
             return [int(first_number)]
         except ValueError:
             return [] # there is no first or second number
@@ -174,7 +174,6 @@ def part_2(lines: List[str]) -> Tuple[str, any]:
     nonsymbols = "*"
     for line_index in range(len(lines)):
         
-        print("-------------------------")
         for symbol_index in range(len(lines[line_index])):
             if lines[line_index][symbol_index] in nonsymbols:
                 # input("Found one")
@@ -198,8 +197,8 @@ def part_2(lines: List[str]) -> Tuple[str, any]:
                         numbers = multiply_adjacent_numbers(lines[adj_line_indicie], symbol_index)
                         for number in numbers:
                             results.append(number)
-                print(len(results))
-                print(results)
+                #print(len(results))
+                #print(results)
                 if len(results) == 2:
                     result = result + (results[0] * results[1])
     return '<Name/Short Description of this part>', result
